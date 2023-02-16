@@ -5,8 +5,8 @@ define("CONF_DB_USER", "root");
 define("CONF_DB_PASS", "");
 define("CONF_DB_NAME", "bd-template");
 
-define("CONF_URL_BASE", "http://www.localhost/template");
-define("CONF_URL_TEST", "http://www.localhost/template"); 
+define("CONF_URL_BASE", "http://www.localhost/list");
+define("CONF_URL_TEST", "http://www.localhost/list"); 
 
 define("CONF_VIEW_WEB", __DIR__ . "/../../themes/web");
 define("CONF_VIEW_APP", __DIR__ . "/../../themes/app");
