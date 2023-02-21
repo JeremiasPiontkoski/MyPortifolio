@@ -20,9 +20,26 @@ $route->post("/cadastro", "Web:postRegister");
 // APP ROUTES
 
 $route->group("/app");
-
 $route->get("/", "App:home");
-$route->get("/perfil", "App:profile");
+$route->get("/perfil/editar", "App:editProfile");
+$route->post("/perfil/editar", "App:postEditProfile");
+
+$route->get("/criarLista", "App:createList");
+$route->post("/criarLista", "App:postCreateList");
+
+$route->get("/lista/{idList}", "App:renderList");
+
+$route->get("/itemLista/{id}", "App:itemList");
+
+$route->get("/criarItemLista/{idList}", "App:createListItem");
+$route->post("/criarItemLista", "App:postCreateListItem");
+
+$route->post("/excluir/lista/item/{idItem}", "App:removeListItem");
+$route->get("/excluir/lista/{idList}", "App:removeList");
+
+$route->post("/update/lista/item/{idItem}", "App:updateListItem");
+
+$route->get("/sair", "App:logout");
 
 $route->group(null);
 

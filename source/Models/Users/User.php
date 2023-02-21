@@ -45,7 +45,7 @@ class User
         $stmt->bindParam(":typeUser", $this->typeUser);
         $stmt->execute();
 
-        return true;
+        return Connect::getInstance()->lastInsertId();
     }
 
     public function validade(String $email, String $password){
@@ -77,10 +77,6 @@ class User
         return true;
     }
 
-    private function getAll(){
-
-    }
-
     public static function isRegisteredEmail(String $email){
         $query = "SELECT * FROM users WHERE `email` = :email";
         $stmt = Connect::getInstance()->prepare($query);
@@ -92,8 +88,27 @@ class User
         return true;
     }
 
-    private function update(){
+    public function updateById(){
+        $query = "UPDATE `users` SET name = :name, email = :email WHERE id = :id";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":name", $this->name);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        return true;
+    }
 
+    public function getAllById(){
+        $query = "SELECT * FROM `users` WHERE id = :id";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+
+        if($stmt->rowCount() == 0){
+            return false;
+        }
+
+        return $stmt->fetch();
     }
 
     /**

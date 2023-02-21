@@ -26,4 +26,24 @@ CREATE TABLE IF NOT EXISTS `normal-users`(
     PRIMARY KEY (`id`)
 );
 ALTER TABLE `normal-users` ADD CONSTRAINT fk_idUser FOREIGN KEY (`idUser`)
-REFERENCES `users` (`id`) ON DELETE  NO ACTION  ON UPDATE  NO ACTION;
+REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `lists`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `idUser` int(11) NOT NULL,
+    `name` VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+ALTER TABLE `lists` ADD CONSTRAINT fk_idUserList FOREIGN KEY (`idUser`)
+REFERENCES `users` (`id`) ON DELETE  NO ACTION ON UPDATE NO ACTION;
+
+CREATE TABLE IF NOT EXISTS `items-list` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `idList` int(11) NOT NULL,
+    `name` VARCHAR(250) NOT NULL,
+    `email` VARCHAR(250) NOT NULL,
+    `phone` VARCHAR(250) NOT NULL
+    PRIMARY KEY (`id`)
+);
+ALTER TABLE `items-list` ADD CONSTRAINT fk_idLIst FOREIGN KEY (`idList`)
+REFERENCES `lists` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

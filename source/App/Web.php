@@ -5,6 +5,7 @@ require "./source/autoload.php";
 
 use League\Plates\Engine;
 use mysql_xdevapi\Exception;
+use Source\Models\Users\NormalUser;
 use Source\Models\Users\TypeUser;
 use Source\Models\Users\User;
 use Source\Support\Response;
@@ -55,7 +56,10 @@ class Web {
                 );
 
                 try {
-                    $user->insert();
+                    $idUser = $user->insert();
+                    $normalUser = new NormalUser();
+                    $normalUser->setIdUser($idUser);
+                    $normalUser->insert();
                     echo json_encode(Response::success_register());
                     return;
                 }catch (\Exception){

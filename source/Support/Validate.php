@@ -2,6 +2,7 @@
 
 namespace Source\Support;
 
+use Source\Models\Lists\ListItem;
 use Source\Models\Users\User;
 
 abstract class Validate
@@ -40,6 +41,45 @@ abstract class Validate
             return false;
         }
 
+        return true;
+    }
+
+    public static function createList(array $data){
+        if(in_array("", $data)){
+            echo json_encode(Response::is_empty());
+            return false;
+        }
+        return true;
+    }
+
+    public static function createListItem(array $data){
+        if(in_array("", $data)){
+            echo json_encode(Response::is_empty());
+            return false;
+        }
+
+        if(!is_email($data["email"])){
+            echo json_encode(Response::invalid_email());
+            return true;
+        }
+
+        if(ListItem::isRegisteredName($data["name"])){
+            echo json_encode(Response::is_used_name());
+            return false;
+        }
+        return true;
+    }
+
+    public static function editProfile(array $data){
+        if(in_array("", $data)){
+            echo json_encode(Response::is_empty());
+            return false;
+        }
+
+        if(!is_email($data["email"])) {
+            echo json_encode(Response::invalid_email());
+            return false;
+        }
         return true;
     }
 }

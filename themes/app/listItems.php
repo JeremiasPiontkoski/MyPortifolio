@@ -1,3 +1,9 @@
+<?php
+    foreach ($listItems as $item) {
+        var_dump($item);
+    }
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -8,18 +14,14 @@
     <title>Document</title>
 </head>
 <body>
-<a href="<?= url("app/sair")?>">Sair</a>
-<br>
-<a href="<?= url("app/criarLista")?>">Criar Lista</a>
-<br>
-<a href="<?= url("app/perfil/editar") ?>">Editar Perfil</a>
+<a href="<?= url("app/criarItemLista/" . $idList) ?>">Criar Item</a><br>
+<a href="<?= url("app") ?>">Home</a>
 <hr>
 <?php
-foreach ($lists as $list){?>
-    <a href="<?= url("app/lista/" . $list->id) ?>"><?= $list->name ?></a> --- <a href="<?= url("app/excluir/lista/$list->id") ?>">Remover</a><br>
+foreach ($listItems as $item){?>
+    <a href="<?= url("app/itemLista/$item->id") ?>"><?= $item->name ?></a><br>
 <?php
 }
 ?>
-
 </body>
 </html>

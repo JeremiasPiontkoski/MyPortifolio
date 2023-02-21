@@ -1,9 +1,3 @@
-<?php
-    if(!empty($_SESSION['user'])){
-        header("Location:" . CONF_URL_BASE . "/app");
-    }
-?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -15,29 +9,26 @@
 </head>
 <body>
 <form id="form">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" id="name">
 
-    <label for="password">Senha:</label>
-    <input type="password" name="password" id="password">
-
-    <button type="submit">Login</button>
-
-    <a href="<?= url("cadastro"); ?>">Cadastro</a>
+    <button type="submit">Enviar</button>
 </form>
 
 <script type="text/javascript" async>
     const form = document.querySelector("#form");
+    const message = document.querySelector("#message");
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const dataUser = new FormData(form);
-        const data = await fetch("<?= url("/"); ?>",{
+        const data = await fetch("<?= url("app/criarLista"); ?>",{
             method: "POST",
             body: dataUser,
         });
-        const user = await data.json();
-        console.log(user);
-        if(user.code == 200) {
+        const list = await data.json();
+        console.log(list);
+
+        if(list.code == 200) {
             window.location.href = "<?= url("app"); ?>";
         }
     });

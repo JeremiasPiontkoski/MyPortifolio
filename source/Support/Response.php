@@ -28,6 +28,14 @@ abstract class Response
         return $response;
     }
 
+    public static function is_used_name() {
+        $response = [
+            "message" => "Este nome já está em uso!",
+            "code" => 400
+        ];
+        return $response;
+    }
+
     public static function short_password(){
         $response = [
             "message" => "A senha deve ter no mínimo oito caracteres!",
@@ -55,6 +63,38 @@ abstract class Response
     public static function success_register(){
         $response = [
             "message" => "Cadastro feito com sucesso!",
+            "code" => 200
+        ];
+        return $response;
+    }
+
+    public static function success_createList(){
+        $response = [
+            "message" => "Lista criada com sucesso!",
+            "code" => 200
+        ];
+        return $response;
+    }
+
+    public static function success_createListItem(){
+        $response = [
+            "message" => "Item criado com sucesso",
+            "code" => 200
+        ];
+        return $response;
+    }
+
+    public static function success_removeItem(){
+        $response = [
+            "message" => "Item excluido com sucesso",
+            "code" => 200
+        ];
+        return $response;
+    }
+
+    public static function success_editProfile(){
+        $response = [
+            "message" => "Perfil editado com sucesso!",
             "code" => 200
         ];
         return $response;
