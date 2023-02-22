@@ -52,6 +52,14 @@ abstract class Response
         return $response;
     }
 
+    public static function invalid_image(){
+        $response = [
+            "message" => "Imagem inválida, tente novamente!",
+            "code" => 400
+        ];
+        return $response;
+    }
+
     public static function success_login(){
         $response = [
             "message" => "Autenticação feita com sucesso!",

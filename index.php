@@ -21,6 +21,8 @@ $route->post("/cadastro", "Web:postRegister");
 
 $route->group("/app");
 $route->get("/", "App:home");
+
+$route->get("/perfil", "App:profile");
 $route->get("/perfil/editar", "App:editProfile");
 $route->post("/perfil/editar", "App:postEditProfile");
 
@@ -28,7 +30,6 @@ $route->get("/criarLista", "App:createList");
 $route->post("/criarLista", "App:postCreateList");
 
 $route->get("/lista/{idList}", "App:renderList");
-
 $route->get("/itemLista/{id}", "App:itemList");
 
 $route->get("/criarItemLista/{idList}", "App:createListItem");
@@ -44,7 +45,6 @@ $route->get("/sair", "App:logout");
 $route->group(null);
 
 // ADM ROUTES
-
 $route->group("/admin");
 
 $route->get("/", "Adm:home");

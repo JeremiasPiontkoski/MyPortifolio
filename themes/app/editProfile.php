@@ -1,3 +1,7 @@
+<?php
+var_dump($user);
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -8,36 +12,43 @@
     <title>Document</title>
 </head>
 <body>
+<a href="<?= url("app") ?>">Home</a>
 <form id="form">
     <label for="name">Nome:</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="<?= $user->name ?>"><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
-
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
+    <input type="email" name="email" id="email" value="<?= $user->email ?>"><br>
 
     <input type="file" name="image" id="image">
 
-    <button type="submit">Cadastrar</button>
+    <?php
+    if(!empty($user->photo)):
+        ?>
+        <img src="<?= url($user->photo); ?>" id="photo" alt="..." width="100px" height="100px">
+    <?php
+    endif;
+    ?>
 
-    <a href="<?= url('') ?>">Login</a>
+    <button type="submit">Atualizar</button>
 </form>
 
 <script type="text/javascript" async>
     const form = document.querySelector("#form");
+    const photo = document.querySelector("#photo");
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const dataUser = new FormData(form);
-        const data = await fetch("<?= url("/cadastro"); ?>",{
+        const data = await fetch("<?= url("app/perfil/editar"); ?>",{
             method: "POST",
             body: dataUser,
         });
         const user = await data.json();
         console.log(user);
-        if(user.code == 200) {
-            window.location.href = "<?= url(""); ?>";
+        console.log(user.message);
+
+        if(user.image){
+            photo.setAttribute("src", user.image);
         }
     });
 </script>

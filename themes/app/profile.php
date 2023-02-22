@@ -13,30 +13,9 @@ var_dump($user);
 </head>
 <body>
 <a href="<?= url("app") ?>">Home</a>
-<form id="form">
-    <label for="name">Nome:</label>
-    <input type="text" name="name" id="name" value="<?= $user->name ?>"><br>
-
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" value="<?= $user->email ?>"><br>
-
-    <button type="submit">Atualizar</button>
-</form>
-
-<script type="text/javascript" async>
-    const form = document.querySelector("#form");
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const dataUser = new FormData(form);
-        const data = await fetch("<?= url("app/perfil/editar"); ?>",{
-            method: "POST",
-            body: dataUser,
-        });
-        const user = await data.json();
-        console.log(user);
-        console.log(user.message);
-    });
-</script>
-
+<p>Nome: <?= $user->name ?></p>
+<p>Email: <?= $user->email ?></p>
+<img src="<?= url($user->photo) ?>" alt="" width="150px" height="150px"><br>
+<a href="<?= url("app/perfil/editar") ?>">Editar</a>
 </body>
 </html>

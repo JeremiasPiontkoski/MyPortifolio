@@ -47,12 +47,20 @@ class Web {
                 $typeUser = new TypeUser();
                 $typeUser = $typeUser->getUserPerson();
 
+                try {
+                    $upload = uploadImage($_FILES['image']);
+                }catch (\Exception){
+                    echo json_encode(Response::invalid_image());
+                    return;
+                }
+
                 $user = new User(
                     null,
                     $data["name"],
                     $data["email"],
                     $data["password"],
-                    $typeUser->id
+                    $typeUser->id,
+                    $upload
                 );
 
                 try {

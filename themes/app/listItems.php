@@ -1,8 +1,8 @@
 <?php
-    foreach ($listItems as $item) {
-        var_dump($item);
-    }
-?>
+//    foreach ($listItems as $item) {
+//        var_dump($item);
+//    }
+//?>
 
 <!doctype html>
 <html lang="pt-br">
@@ -18,9 +18,14 @@
 <a href="<?= url("app") ?>">Home</a>
 <hr>
 <?php
-foreach ($listItems as $item){?>
-    <a href="<?= url("app/itemLista/$item->id") ?>"><?= $item->name ?></a><br>
-<?php
+if(!$listItems) {?>
+    <p>Nao tem nada</p>
+    <?php
+}else{
+    foreach ($listItems as $list){?>
+        <a href="<?= url("app/lista/" . $list->id) ?>"><?= $list->name ?></a> --- <a href="<?= url("app/excluir/lista/$list->id") ?>">Remover</a><br>
+        <?php
+    }
 }
 ?>
 </body>

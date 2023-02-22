@@ -30,10 +30,19 @@ class App {
         ]);
     }
 
-    public function editProfile(){
+    public function profile(){
         $user = new User();
         $user->setId($_SESSION['user']);
         echo $this->view->render("profile",
+            [
+                "user" => $user->getAllById()
+            ]);
+    }
+
+    public function editProfile(){
+        $user = new User();
+        $user->setId($_SESSION['user']);
+        echo $this->view->render("editProfile",
         [
             "user" => $user->getAllById()
         ]);
@@ -42,15 +51,28 @@ class App {
     public function postEditProfile(array $data) {
         if(!empty($data)){
             if(Validate::editProfile($data)){
+                try {
+                    $upload = uploadImage($_FILES['image']);
+                }catch (\Exception){
+                    echo json_encode(Response::invalid_image());
+                    return;
+                }
                 try{
                     $user = new User();
                     $user->setId($_SESSION['user']);
                     $user->setName($data["name"]);
                     $user->setEmail($data["email"]);
+                    $user->setPhoto($upload);
                     $user->updateById();
-
-                    echo json_encode(Response::success_editProfile());
+                    $response = [
+                        "message" => "Dados alterados com sucesso",
+                        "code" => 200,
+                        "image" => url($user->getPhoto())
+                    ];
+                    echo json_encode($response);
                     return;
+//                    echo json_encode(Response::success_editProfile());
+//                    return;
 
                 }catch (\Exception){
                     echo json_encode(Response::server_error());

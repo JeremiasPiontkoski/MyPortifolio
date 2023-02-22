@@ -12,12 +12,17 @@
 <br>
 <a href="<?= url("app/criarLista")?>">Criar Lista</a>
 <br>
-<a href="<?= url("app/perfil/editar") ?>">Editar Perfil</a>
+<a href="<?= url("app/perfil") ?>">Perfil</a>
 <hr>
 <?php
+if(!$lists) {?>
+<p>Nao tem nada</p>
+<?php
+}else{
 foreach ($lists as $list){?>
     <a href="<?= url("app/lista/" . $list->id) ?>"><?= $list->name ?></a> --- <a href="<?= url("app/excluir/lista/$list->id") ?>">Remover</a><br>
-<?php
+    <?php
+}
 }
 ?>
 

@@ -37,12 +37,13 @@ class User
     }
 
     public function insert(){
-        $query = "INSERT INTO users (name, email, password, typeUser) VALUES (:name, :email, :password, :typeUser)";
+        $query = "INSERT INTO users (name, email, password, typeUser, photo) VALUES (:name, :email, :password, :typeUser, :photo)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindValue(":password", password_hash($this->password, PASSWORD_DEFAULT));
         $stmt->bindParam(":typeUser", $this->typeUser);
+        $stmt->bindParam(":photo", $this->photo);
         $stmt->execute();
 
         return Connect::getInstance()->lastInsertId();
@@ -89,11 +90,12 @@ class User
     }
 
     public function updateById(){
-        $query = "UPDATE `users` SET name = :name, email = :email WHERE id = :id";
+        $query = "UPDATE `users` SET name = :name, email = :email, photo = :photo WHERE id = :id";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":photo", $this->photo);
         $stmt->execute();
         return true;
     }

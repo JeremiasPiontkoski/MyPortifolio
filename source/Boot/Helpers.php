@@ -31,6 +31,6 @@ function theme(string $path = null, string $theme = CONF_VIEW_THEME): string
 
 function uploadImage ($img) : string
 {
-  $image = new Image(CONF_UPLOAD_DIR, CONF_UPLOAD_IMAGE_DIR);
-  return $image->upload($img,md5(time()));
+        $image = new Image(CONF_UPLOAD_DIR, CONF_UPLOAD_IMAGE_DIR);
+        return $image->upload($img,md5(time()));
 }
