@@ -100,9 +100,25 @@ abstract class Response
         return $response;
     }
 
+    public static function success_deleteList(){
+        $response = [
+            "message" => "Lista excluída com sucesso!",
+            "code" => 200
+        ];
+        return $response;
+    }
+
     public static function success_editProfile(){
         $response = [
             "message" => "Perfil editado com sucesso!",
+            "code" => 200
+        ];
+        return $response;
+    }
+
+    public static function success_updateItemList(){
+        $response = [
+            "message" => "Item da lista editado com sucesso!",
             "code" => 200
         ];
         return $response;
@@ -112,6 +128,74 @@ abstract class Response
         $response = [
             "message" => "Ocorreu um problema, tente novamente!",
             "code" => 500
+        ];
+        return $response;
+    }
+
+    public static function getUser($user){
+        $response = [
+            "message" => "Dados do usuário",
+            "code" => 200,
+            "id" => $user->id,
+            "name" => $user->name,
+            "email" => $user->email,
+            "typeUser"=> $user->typeUser,
+            "photo" => $user->photo
+        ];
+        return $response;
+    }
+    
+    public static function getListsByUser($lists){
+        $response = '';
+        $arrayResponse = [];
+        if(!$lists){
+            $response = false;
+            return $response;
+        }
+        foreach ($lists as $list) {
+            $response = [
+                "message" => "Dados da lista",
+                "code" => 200,
+                "id" => $list->id,
+                "idUser" => $list->idUser,
+                "name" => $list->name
+            ];
+            $arrayResponse[] = $response;
+        }
+        return $arrayResponse;
+    }
+
+    public static function getItemsListById($lists){
+        $response = '';
+        $arrayResponse = [];
+        if(!$lists){
+            $response = false;
+            return $response;
+        }
+        foreach ($lists as $list) {
+                $response = [
+                "message" => "Item da lista",
+                "code" => 200,
+                "id" => $list->id,
+                "idList" => $list->idList,
+                "name" => $list->name,
+                "email" => $list->email,
+                "phone" => $list->phone
+            ];
+            $arrayResponse[] = $response;
+        }
+        return $arrayResponse;
+    }
+
+    public static function getItemListById($list) {
+        $response = [
+            "message" => "Item da lista",
+            "code" => 200,
+            "id" => $list->id,
+            "idList" => $list->idList,
+            "name" => $list->name,
+            "email" => $list->email,
+            "phone" => $list->phone
         ];
         return $response;
     }

@@ -15,20 +15,14 @@ var_dump($user);
 <a href="<?= url("app") ?>">Home</a>
 <form id="form">
     <label for="name">Nome:</label>
-    <input type="text" name="name" id="name" value="<?= $user->name ?>"><br>
+    <input type="text" name="name" id="name" value="<?= $user["name"] ?>"><br>
 
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" value="<?= $user->email ?>"><br>
+    <input type="email" name="email" id="email" value="<?= $user["email"] ?>"><br>
 
     <input type="file" name="image" id="image">
 
-    <?php
-    if(!empty($user->photo)):
-        ?>
-        <img src="<?= url($user->photo); ?>" id="photo" alt="..." width="100px" height="100px">
-    <?php
-    endif;
-    ?>
+    <img src="<?= url($user["photo"]); ?>" id="photo" alt="..." width="100px" height="100px">
 
     <button type="submit">Atualizar</button>
 </form>
@@ -47,8 +41,8 @@ var_dump($user);
         console.log(user);
         console.log(user.message);
 
-        if(user.image){
-            photo.setAttribute("src", user.image);
+        if(user.code == 200) {
+            window.location.href = "<?= url("app/perfil"); ?>";
         }
     });
 </script>

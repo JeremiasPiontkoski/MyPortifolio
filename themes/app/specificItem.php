@@ -15,13 +15,13 @@ var_dump($item);
 
 <form id="form">
     <label for="name">Nome</label>
-    <input type="text" name="name" id="name" value="<?= $item->name ?>"><br>
+    <input type="text" name="name" id="name" value="<?= $item["name"] ?>"><br>
 
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" value="<?= $item->email ?>"><br>
+    <input type="email" name="email" id="email" value="<?= $item["email"] ?>"><br>
 
     <label for="phone">Telefone</label>
-    <input type="text" name="phone" id="phone" value="<?= $item->phone ?>">
+    <input type="text" name="phone" id="phone" value="<?= $item["phone"] ?>">
 
     <button type="submit" id="btnRemove">Excluir</button>
     <button type="submit" id="btnUpdate">Atualizar</button>
@@ -32,14 +32,14 @@ var_dump($item);
     btnRemove.addEventListener("click", async (e) => {
         e.preventDefault();
         const dataUser = new FormData(form);
-        const data = await fetch("<?= url("app/excluir/lista/item/$item->id"); ?>",{
+        const data = await fetch("<?= url("app/excluir/lista/item/" . $item["id"]); ?>",{
            method: "POST",
            body: dataUser,
         });
         const item = await data.json();
         console.log(item);
         if(item.code == 200) {
-            window.location.href = "<?= url("app/lista/$item->idList}"); ?>";
+            window.location.href = "<?= url("app/lista/" . $item["idList"]); ?>";
         }
     });
 
@@ -47,14 +47,14 @@ var_dump($item);
     btnUpdate.addEventListener("click", async (e) => {
         e.preventDefault();
         const dataUser = new FormData(form);
-        const data = await fetch("<?= url("app/update/lista/item/$item->id"); ?>",{
+        const data = await fetch("<?= url("app/update/lista/item/" . $item["id"]); ?>",{
             method: "POST",
             body: dataUser,
         });
         const item = await data.json();
         console.log(item);
         if(item.code == 200) {
-            window.location.href = "<?= url("app/lista/$item->idList}"); ?>";
+            window.location.href = "<?= url("app/lista/" . $item["idList"]); ?>";
         }
     });
 </script>

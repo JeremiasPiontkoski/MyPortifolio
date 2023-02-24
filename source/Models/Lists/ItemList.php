@@ -4,7 +4,7 @@ namespace Source\Models\Lists;
 
 use Source\Core\Connect;
 
-class ListItem
+class ItemList
 {
     private $id;
     private $idList;

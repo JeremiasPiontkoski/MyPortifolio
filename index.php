@@ -11,18 +11,18 @@ $route->namespace("Source\App");
 
 // WEB ROUTES
 
-$route->get("/", "Web:login");
-$route->post("/", "Web:postLogin");
+$route->get("/", "Web:login"); #
+$route->post("/", "Web:postLogin"); #
 
-$route->get("/cadastro", "Web:register");
-$route->post("/cadastro", "Web:postRegister");
+$route->get("/cadastro", "Web:register"); #
+$route->post("/cadastro", "Web:postRegister"); #
 
 // APP ROUTES
 
 $route->group("/app");
 $route->get("/", "App:home");
 
-$route->get("/perfil", "App:profile");
+$route->get("/perfil", "App:profile"); //GETPROFILE
 $route->get("/perfil/editar", "App:editProfile");
 $route->post("/perfil/editar", "App:postEditProfile");
 

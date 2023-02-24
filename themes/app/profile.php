@@ -13,9 +13,9 @@ var_dump($user);
 </head>
 <body>
 <a href="<?= url("app") ?>">Home</a>
-<p>Nome: <?= $user->name ?></p>
-<p>Email: <?= $user->email ?></p>
-<img src="<?= url($user->photo) ?>" alt="" width="150px" height="150px"><br>
+<p>Nome: <?= $user["name"] ?></p>
+<p>Email: <?= $user["email"] ?></p>
+<img src="<?= url($user["photo"]) ?>" alt="" width="150px" height="150px"><br>
 <a href="<?= url("app/perfil/editar") ?>">Editar</a>
 </body>
 </html>

@@ -23,7 +23,7 @@ if(!$listItems) {?>
     <?php
 }else{
     foreach ($listItems as $list){?>
-        <a href="<?= url("app/lista/" . $list->id) ?>"><?= $list->name ?></a> --- <a href="<?= url("app/excluir/lista/$list->id") ?>">Remover</a><br>
+        <a href="<?= url("app/itemLista/" . $list["id"]) ?>"><?= $list["name"] ?></a> --- <a href="<?= url("app/excluir/lista/" . $list["id"]) ?>">Remover</a><br>
         <?php
     }
 }

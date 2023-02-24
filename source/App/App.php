@@ -3,7 +3,7 @@
 namespace Source\App;
 use CoffeeCode\Uploader\Media;
 use League\Plates\Engine;
-use Source\Models\Lists\ListItem;
+use Source\Models\Lists\ItemList;
 use Source\Models\Lists\Lists;
 use Source\Models\Users\User;
 use Source\Support\Response;
@@ -23,28 +23,31 @@ class App {
     public function home(){
         $list = new Lists();
         $list->setIdUser($_SESSION['user']);
+        $list = $list->getByIdUser();
 
         echo $this->view->render("home",
         [
-            "lists" => $list->getByIdUser()
+            "lists" => Response::getListsByUser($list)
         ]);
     }
 
     public function profile(){
         $user = new User();
         $user->setId($_SESSION['user']);
+        $user = $user->getAllById();
         echo $this->view->render("profile",
             [
-                "user" => $user->getAllById()
+                "user" => Response::getUser($user)
             ]);
     }
 
     public function editProfile(){
         $user = new User();
         $user->setId($_SESSION['user']);
+        $user = $user->getAllById();
         echo $this->view->render("editProfile",
         [
-            "user" => $user->getAllById()
+            "user" => Response::getUser($user)
         ]);
     }
 
@@ -64,15 +67,9 @@ class App {
                     $user->setEmail($data["email"]);
                     $user->setPhoto($upload);
                     $user->updateById();
-                    $response = [
-                        "message" => "Dados alterados com sucesso",
-                        "code" => 200,
-                        "image" => url($user->getPhoto())
-                    ];
-                    echo json_encode($response);
+
+                    echo json_encode(Response::success_editProfile());
                     return;
-//                    echo json_encode(Response::success_editProfile());
-//                    return;
 
                 }catch (\Exception){
                     echo json_encode(Response::server_error());
@@ -107,12 +104,13 @@ class App {
     }
 
     public function renderList($data){
-        $itemsList = new ListItem();
+        $itemsList = new ItemList();
         $itemsList->setIdList($data["idList"]);
+        $itemsList = $itemsList->getByIdList();
         echo $this->view->render("listItems",
         [
             "idList" => $data["idList"],
-            "listItems" => $itemsList->getByIdList()
+            "listItems" => Response::getItemsListById($itemsList)
         ]);
     }
 
@@ -127,7 +125,7 @@ class App {
         if(!empty($data)){
             if(Validate::createListItem($data)){
                 try {
-                    $itemList = new ListItem(
+                    $itemList = new ItemList(
                         null,
                         $data["idList"],
                         $data['name'],
@@ -148,17 +146,17 @@ class App {
     }
 
     public function itemList(array $data) {
-        var_dump($data);
-        $itemList = new ListItem();
+        $itemList = new ItemList();
         $itemList->setId($data["id"]);
+        $itemList = $itemList->getById();
         echo $this->view->render("specificItem",
         [
-            "item" => $itemList->getById()
+            "item" => Response::getItemListById($itemList)
         ]);
     }
 
     public function removeListItem(array $data) {
-        $listItem = new ListItem();
+        $listItem = new ItemList();
         $listItem->setId($data["idItem"]);
         $listItem->deleteById();
         echo json_encode(Response::success_removeItem());
@@ -166,19 +164,23 @@ class App {
     }
 
     public function updateListItem(array $data){
-        $listItem = new ListItem(
-            $data["idItem"],
-            null,
-            $data["name"],
-            $data["email"],
-            $data["phone"]
-        );
-        $listItem->updateById();
-        $response = [
-            "code" => 200
-        ];
-        echo json_encode($response);
-        return;
+        if(Validate::updateItemList($data)){
+            try {
+                $listItem = new ItemList(
+                    $data["idItem"],
+                    null,
+                    $data["name"],
+                    $data["email"],
+                    $data["phone"]
+                );
+                $listItem->updateById();
+               echo json_encode(Response::success_updateItemList());
+                return;
+            }catch (\Exception){
+                echo json_encode(Response::server_error());
+                return;
+            }
+        }
     }
 
     public function removeList(array $data){
