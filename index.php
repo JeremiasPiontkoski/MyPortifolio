@@ -11,11 +11,11 @@ $route->namespace("Source\App");
 
 // WEB ROUTES
 
-$route->get("/", "Web:login"); #
-$route->post("/", "Web:postLogin"); #
+$route->get("/", "Web:login");
+$route->post("/", "Web:postLogin");
 
-$route->get("/cadastro", "Web:register"); #
-$route->post("/cadastro", "Web:postRegister"); #
+$route->get("/cadastro", "Web:register");
+$route->post("/cadastro", "Web:postRegister");
 
 // APP ROUTES
 

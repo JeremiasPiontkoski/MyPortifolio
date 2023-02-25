@@ -68,7 +68,7 @@ class App {
                     $user->setPhoto($upload);
                     $user->updateById();
 
-                    echo json_encode(Response::success_editProfile());
+                    echo json_encode(Response::success_edit_profile());
                     return;
 
                 }catch (\Exception){
@@ -93,7 +93,7 @@ class App {
                         $data["name"],
                     );
                     $list->insert();
-                    echo json_encode(Response::success_createList());
+                    echo json_encode(Response::success_create_list());
                     return;
                 }catch (\Exception){
                     echo json_encode(Response::server_error());
@@ -135,7 +135,7 @@ class App {
 
                     $itemList->insert();
 
-                    echo json_encode(Response::success_createListItem());
+                    echo json_encode(Response::success_create_item_list());
                     return;
                 }catch (\Exception){
                     echo json_encode(Response::server_error());
@@ -159,7 +159,7 @@ class App {
         $listItem = new ItemList();
         $listItem->setId($data["idItem"]);
         $listItem->deleteById();
-        echo json_encode(Response::success_removeItem());
+        echo json_encode(Response::success_remove_item());
         return;
     }
 
@@ -174,7 +174,7 @@ class App {
                     $data["phone"]
                 );
                 $listItem->updateById();
-               echo json_encode(Response::success_updateItemList());
+               echo json_encode(Response::success_update_item_list());
                 return;
             }catch (\Exception){
                 echo json_encode(Response::server_error());

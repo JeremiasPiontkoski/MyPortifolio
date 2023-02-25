@@ -17,19 +17,19 @@ $route->post("/list/name/{name}", "Api:createList");
 
 $route->get("/lists", "Api:getLists");
 
-$route->get("/itemsList/{idList}", "Api:getItemsList");
+$route->get("/items/list/{idList}", "Api:getItemsList");
 
-$route->get("/itemList/{idItem}", "Api:getItemList");
+$route->get("/list/item/{idItem}", "Api:getItemList");
 
-$route->post("/createItemList/idList/{idList}/name/{name}/email/{email}/phone/{phone}", "Api:createItemList");
+$route->post("/list/item/idList/{idList}/name/{name}/email/{email}/phone/{phone}", "Api:createItemList");
 
-$route->put("/updateUser/name/{name}/email/{email}", "Api:updateUser");
+$route->put("/user/update/name/{name}/email/{email}", "Api:updateUser");
 
-$route->put("/updateItemList/idItem/{idItem}/name/{name}/email/{email}/phone/{phone}", "Api:updateItemList");
+$route->put("/list/item/update/idItem/{idItem}/name/{name}/email/{email}/phone/{phone}", "Api:updateItemList");
 
-$route->delete("/removeList/{idList}", "Api:removeList");
+$route->delete("/list/delete/{idList}", "Api:deleteList");
 
-$route->delete("/removeItemList/{idItem}", "Api:removeItemList");
+$route->delete("/list/item/delete/{idItem}", "Api:deleteItemList");
 
 $route->dispatch();
 

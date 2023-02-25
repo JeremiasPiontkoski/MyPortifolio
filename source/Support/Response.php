@@ -76,7 +76,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_createList(){
+    public static function success_create_list(){
         $response = [
             "message" => "Lista criada com sucesso!",
             "code" => 200
@@ -84,7 +84,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_createListItem(){
+    public static function success_create_item_list(){
         $response = [
             "message" => "Item criado com sucesso",
             "code" => 200
@@ -92,7 +92,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_removeItem(){
+    public static function success_remove_item(){
         $response = [
             "message" => "Item excluido com sucesso",
             "code" => 200
@@ -100,7 +100,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_deleteList(){
+    public static function success_delete_list(){
         $response = [
             "message" => "Lista excluída com sucesso!",
             "code" => 200
@@ -108,7 +108,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_editProfile(){
+    public static function success_edit_profile(){
         $response = [
             "message" => "Perfil editado com sucesso!",
             "code" => 200
@@ -116,7 +116,7 @@ abstract class Response
         return $response;
     }
 
-    public static function success_updateItemList(){
+    public static function success_update_item_list(){
         $response = [
             "message" => "Item da lista editado com sucesso!",
             "code" => 200

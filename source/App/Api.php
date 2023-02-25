@@ -87,7 +87,7 @@ class Api
                 $this->list->setName($data["name"]);
                 try {
                     $this->list->insert();
-                    echo json_encode(\Source\Support\Response::success_createList());
+                    echo json_encode(\Source\Support\Response::success_create_list());
                     return;
                 }catch (\Exception){
                     echo json_encode(\Source\Support\Response::server_error());
@@ -159,7 +159,7 @@ class Api
 
                     $this->itemList->insert();
 
-                    echo json_encode(\Source\Support\Response::success_createListItem());
+                    echo json_encode(\Source\Support\Response::success_create_item_list());
                     return;
                 }catch (\Exception){
                     echo json_encode(\Source\Support\Response::server_error());
@@ -177,7 +177,7 @@ class Api
                     $this->user->setEmail($data["email"]);
 
                     $this->user->updateById();
-                    echo json_encode(\Source\Support\Response::success_editProfile());
+                    echo json_encode(\Source\Support\Response::success_edit_profile());
                     return;
                 }catch (\Exception){
                     echo json_encode(\Source\Support\Response::server_error());
@@ -196,7 +196,7 @@ class Api
                     $this->itemList->setEmail($data["email"]);
                     $this->itemList->setPhone($data["phone"]);
                     $this->itemList->updateById();
-                    echo json_encode(\Source\Support\Response::success_updateItemList());
+                    echo json_encode(\Source\Support\Response::success_update_item_list());
                     return;
                 }catch (\Exception) {
                     echo json_encode(\Source\Support\Response::server_error());
@@ -206,12 +206,12 @@ class Api
         }
     }
 
-    public function removeList(array $data){
+    public function deleteList(array $data){
         if(Validate::login($this->arrayVerify, $this->user)){
             $this->list->setId($data["idList"]);
             try {
                 $this->list->deleteById();
-                echo json_encode(\Source\Support\Response::success_deleteList());
+                echo json_encode(\Source\Support\Response::success_delete_list());
                 return;
             }catch (\Exception){
                 echo json_encode(\Source\Support\Response::server_error());
@@ -220,12 +220,12 @@ class Api
         }
     }
 
-    public function removeItemList(array $data) {
+    public function deleteItemList(array $data) {
         if(Validate::login($this->arrayVerify, $this->user)) {
             $this->itemList->setId($data["idItem"]);
             try {
                 $this->itemList->deleteById();
-                echo json_encode(\Source\Support\Response::success_removeItem());
+                echo json_encode(\Source\Support\Response::success_remove_item());
                 return;
             }catch (\Exception){
                 echo json_encode(\Source\Support\Response::server_error());
