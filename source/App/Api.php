@@ -39,16 +39,6 @@ class Api
             "password" => $this->headers["Password"],
             "rule" => $this->headers["Rule"]
         ];
-
-//        if(empty($this->headers["Email"]) || empty($this->headers["Password"]) || empty($this->headers["Rule"])){
-//            $response = [
-//                "code" => 400,
-//                "type" => "bad_request",
-//                "message" => "Por favor, informe Email e Senha"
-//            ];
-//            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-//            return;
-//        }
     }
 
     public function getUser(){
