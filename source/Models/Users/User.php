@@ -68,6 +68,7 @@ class User
         $this->name = $user->name;
         $this->email = $user->email;
         $this->typeUser = $user->typeUser;
+        $this->photo = $user->photo;
 
         $this->setSession($this->id);
         return true;
