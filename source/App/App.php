@@ -2,6 +2,7 @@
 
 namespace Source\App;
 use CoffeeCode\Uploader\Media;
+use JsonException;
 use League\Plates\Engine;
 use Source\Models\Lists\ItemList;
 use Source\Models\Lists\Lists;
@@ -36,33 +37,29 @@ class App {
         $user->setId($_SESSION['user']);
         $user = $user->getAllById();
         echo $this->view->render("profile",
-            [
-                "user" => Response::getUser($user)
-            ]);
-    }
-
-    public function editProfile(){
-        $user = new User();
-        $user->setId($_SESSION['user']);
-        $user = $user->getAllById();
-        echo $this->view->render("editProfile",
         [
             "user" => Response::getUser($user)
         ]);
     }
 
-    public function postEditProfile(array $data) {
+    public function postProfile(array $data) {
         if(!empty($data)){
             if(Validate::editProfile($data)){
+                $user = new User();
+                $user->setId($_SESSION["user"]);
+                $dataUser = $user->getAllById();
                 try {
-                    $upload = uploadImage($_FILES['image']);
+                    if(!empty($_FILES['image']['tmp_name'])){
+                        $upload = uploadImage($_FILES['image']);
+                    }else {
+                        $upload = $dataUser->photo;
+                    }
                 }catch (\Exception){
                     echo json_encode(Response::invalid_image());
                     return;
                 }
                 try{
-                    $user = new User();
-                    $user->setId($_SESSION['user']);
+                    $user->getId();
                     $user->setName($data["name"]);
                     $user->setEmail($data["email"]);
                     $user->setPhoto($upload);
@@ -80,7 +77,7 @@ class App {
     }
 
     public function createList(){
-        echo $this->view->render("createList");
+        echo $this->view->render("lists/createList");
     }
 
     public function postCreateList(?array $data){
@@ -107,21 +104,21 @@ class App {
         $itemsList = new ItemList();
         $itemsList->setIdList($data["idList"]);
         $itemsList = $itemsList->getByIdList();
-        echo $this->view->render("listItems",
+        echo $this->view->render("lists/itemsList",
         [
             "idList" => $data["idList"],
             "listItems" => Response::getItemsListById($itemsList)
         ]);
     }
 
-    public function createListItem($data){
-        echo $this->view->render("createListItem",
+    public function createItemList($data){
+        echo $this->view->render("lists/createItemList",
         [
             "idList" => $data["idList"],
         ]);
     }
 
-    public function postCreateListItem(?array $data){
+    public function postCreateItemList(?array $data){
         if(!empty($data)){
             if(Validate::createListItem($data)){
                 try {
@@ -149,13 +146,13 @@ class App {
         $itemList = new ItemList();
         $itemList->setId($data["id"]);
         $itemList = $itemList->getById();
-        echo $this->view->render("specificItem",
+        echo $this->view->render("lists/specificItem",
         [
             "item" => Response::getItemListById($itemList)
         ]);
     }
 
-    public function removeListItem(array $data) {
+    public function removeItemLIst(array $data) {
         $listItem = new ItemList();
         $listItem->setId($data["idItem"]);
         $listItem->deleteById();
@@ -163,7 +160,7 @@ class App {
         return;
     }
 
-    public function updateListItem(array $data){
+    public function updateItemList(array $data){
         if(Validate::updateItemList($data)){
             try {
                 $listItem = new ItemList(

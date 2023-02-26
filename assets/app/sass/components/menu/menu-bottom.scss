@@ -17,8 +17,7 @@ div.nav-bottom {
         display: flex;
         justify-content: center;
         align-items: center;
-
-        gap: 15rem;
+        gap: 4rem;
 
         li {
             list-style: none;
@@ -32,6 +31,14 @@ div.nav-bottom {
                     }
                 }
             }
+        }
+    }
+}
+
+@media(min-width: 800px) {
+    div.nav-bottom {
+        ul {
+            gap: 15rem;
         }
     }
 }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= url("assets/style/style.css") ?>">
     <link rel="stylesheet" href="<?= url("assets/app/style/style.css") ?>">
-    <title>Document</title>
+    <title>Criar Item da Lista</title>
 </head>
 <body>
 
@@ -36,6 +36,10 @@
         <button type="submit">Cadastrar</button>
     </form>
 
+    <div class="error-message">
+        <p id="message">
+        </p>
+    </div>
     
 </section>
 

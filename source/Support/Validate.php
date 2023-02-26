@@ -93,10 +93,6 @@ abstract class Validate
             return false;
         }
 
-        if(ItemList::isRegisteredName($data["name"])){
-            echo json_encode(Response::is_used_name());
-            return false;
-        }
         return true;
     }
 }

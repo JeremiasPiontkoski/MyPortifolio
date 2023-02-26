@@ -22,9 +22,8 @@ $route->post("/cadastro", "Web:postRegister");
 $route->group("/app");
 $route->get("/", "App:home");
 
-$route->get("/perfil", "App:profile"); //GETPROFILE
-$route->get("/perfil/editar", "App:editProfile");
-$route->post("/perfil/editar", "App:postEditProfile");
+$route->get("/perfil", "App:profile");
+$route->post("/perfil", "App:postProfile");
 
 $route->get("/criarLista", "App:createList");
 $route->post("/criarLista", "App:postCreateList");
@@ -32,13 +31,13 @@ $route->post("/criarLista", "App:postCreateList");
 $route->get("/lista/{idList}", "App:renderList");
 $route->get("/itemLista/{id}", "App:itemList");
 
-$route->get("/criarItemLista/{idList}", "App:createListItem");
-$route->post("/criarItemLista", "App:postCreateListItem");
+$route->get("/criarItemLista/{idList}", "App:createItemList");
+$route->post("/criarItemLista", "App:postCreateItemList");
 
-$route->post("/excluir/lista/item/{idItem}", "App:removeListItem");
+$route->post("/excluir/lista/item/{idItem}", "App:removeItemList");
 $route->get("/excluir/lista/{idList}", "App:removeList");
 
-$route->post("/update/lista/item/{idItem}", "App:updateListItem");
+$route->post("/update/lista/item/{idItem}", "App:updateItemList");
 
 $route->get("/sair", "App:logout");
 

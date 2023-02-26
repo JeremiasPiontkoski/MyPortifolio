@@ -176,7 +176,7 @@ div.nav-bottom ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15rem;
+  gap: 4rem;
 }
 div.nav-bottom ul li {
   list-style: none;
@@ -189,6 +189,11 @@ div.nav-bottom ul li svg path.icon:hover {
   fill: #edf2f4;
 }
 
+@media (min-width: 800px) {
+  div.nav-bottom ul {
+    gap: 15rem;
+  }
+}
 section.itemsList {
   width: 50vw;
   height: auto;
