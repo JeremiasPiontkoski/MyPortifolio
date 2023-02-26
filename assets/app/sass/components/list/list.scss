@@ -1,0 +1,70 @@
+section.itemsList{
+   width: 50vw; 
+   height: auto;
+
+
+   margin: 0 auto;
+   margin-top: 8rem;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 5rem;
+
+
+            div.lists {
+                width: 25.5rem;
+                height: 11rem;
+
+                background-color: $gray-400;
+                border-radius: 2rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 2rem;
+
+                a {
+                    text-decoration: none;
+                    font-size: map-get($font-sizes , normal);
+                    font-weight: map-get($font-weights , bold);
+                    color: $gray-100;
+
+                    transition: .5s ease;
+
+                    &:hover {
+                        color: $gray-800;
+                    }
+                }
+
+                div {
+                    width: 15rem;
+                    height: 3.5rem;
+                    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background-color: $gray-100;
+                    border-radius: 2rem;
+
+                    a {
+                        font-size: map-get($font-sizes , extra-small);
+                        font-weight: map-get($font-weights , regular);
+
+                        text-decoration: none;
+                        color: $gray-800;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        gap: 2rem;
+
+                        transition: .5s ease;
+                    }
+                }
+        }
+}

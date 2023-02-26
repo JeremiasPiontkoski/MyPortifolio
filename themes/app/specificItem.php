@@ -1,7 +1,3 @@
-<?php
-var_dump($item);
-?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -9,25 +5,45 @@ var_dump($item);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="<?= url("assets/style/style.css") ?>">
+    <link rel="stylesheet" href="<?= url("assets/app/style/style.css") ?>">
     <title>Document</title>
 </head>
 <body>
 
-<form id="form">
-    <label for="name">Nome</label>
-    <input type="text" name="name" id="name" value="<?= $item["name"] ?>"><br>
+<section class="updateItemList">
+    <h1 class="title">List<span>Maker</span></h1>
+    <h3 class="title">Edição de Item</h3>
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" value="<?= $item["email"] ?>"><br>
+    <form id="form" class="updateItemList">
+        <div class="container">
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name" value="<?= $item["name"] ?>">
+        </div>
 
-    <label for="phone">Telefone</label>
-    <input type="text" name="phone" id="phone" value="<?= $item["phone"] ?>">
+        <div class="container">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<?= $item["email"] ?>">
+        </div>
 
-    <button type="submit" id="btnRemove">Excluir</button>
-    <button type="submit" id="btnUpdate">Atualizar</button>
-</form>
+        <div class="container">
+            <label for="phone">Telefone</label>
+            <input type="text" name="phone" id="phone" value="<?= $item["phone"] ?>">
+        </div>
+
+        <button type="submit" id="btnRemove">Excluir</button>
+        <button type="submit" id="btnUpdate">Atualizar</button>
+    </form>
+
+    <div class="error-message">
+        <p id="message">
+        </p>
+    </div>
+</section>
 
 <script type="text/javascript" async>
+    const message = document.querySelector("#message");
+
     const btnRemove = document.querySelector("#btnRemove");
     btnRemove.addEventListener("click", async (e) => {
         e.preventDefault();
@@ -40,6 +56,8 @@ var_dump($item);
         console.log(item);
         if(item.code == 200) {
             window.location.href = "<?= url("app/lista/" . $item["idList"]); ?>";
+        }else {
+            message.innerHTML = item.message;
         }
     });
 
@@ -55,6 +73,8 @@ var_dump($item);
         console.log(item);
         if(item.code == 200) {
             window.location.href = "<?= url("app/lista/" . $item["idList"]); ?>";
+        }else {
+            message.innerHTML = item.message;
         }
     });
 </script>

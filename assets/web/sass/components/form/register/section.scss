@@ -1,0 +1,23 @@
+section.register {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1,
+    h3 {
+        margin-top: 2rem;
+    }
+
+    div.error-message,
+    div.account {
+        margin-top: 1rem;
+    }
+
+    div.account {
+        margin-bottom: 1rem;
+    }
+}

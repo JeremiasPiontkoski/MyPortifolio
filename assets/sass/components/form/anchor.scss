@@ -1,0 +1,25 @@
+div.account {
+    width: 17.5rem;
+    height: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: map-get($font-sizes , small);
+        color: $gray-800;
+        text-align: center;
+
+        a {
+            font-size: map-get($font-sizes , small);
+            color: $gray-400;
+            text-align: center;
+            transition: ease .5s;
+
+            &:hover {
+                color: $gray-800;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+h1.title {
+    font-size: map-get($font-sizes , extra-large);
+    font-weight: map-get($font-weights , bold);
+    color: $gray-400;
+
+    span{
+        font-size: map-get($font-sizes , extra-large);
+        font-weight: map-get($font-weights , bold);
+        color: $gray-800;
+    }
+}
+
+h3.title {
+    font-size: map-get($font-sizes , large);
+    font-weight: map-get($font-weights , regular);
+    color: $gray-800;
+}

@@ -1,0 +1,30 @@
+nav {
+    width: 50vw;
+    height: 6rem;
+
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+
+    a,
+    span {
+        font-size: map-get($font-sizes , large);
+        font-weight: map-get($font-weights , bold);
+    }
+
+    a {
+        color: $gray-400;
+        text-decoration: none;
+
+        span{
+            color: $gray-800;
+        } 
+    }
+}

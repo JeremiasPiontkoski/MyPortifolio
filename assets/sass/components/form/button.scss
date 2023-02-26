@@ -1,0 +1,59 @@
+button {
+    width: 12rem;
+    height: 4rem;
+    background-color: $gray-400;
+
+    font-size: map-get($font-sizes , normal);
+    color: $gray-100;
+
+    border-radius: 1.5rem;
+
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    transition: ease .5s;
+
+    &:hover {
+        background-color: transparent;
+        border: 2px solid $gray-400;
+        color: $gray-400;
+    }
+}
+
+a.btn {
+    width: 12rem;
+    height: 4rem;
+    background-color: $gray-400;
+
+    text-decoration: none;
+    
+    border-radius: 1.5rem;
+
+    font-size: map-get($font-sizes , normal);
+    color: $gray-100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2rem;
+    transition: ease .5s;
+
+    &:hover {
+        background-color: transparent;
+        border: 2px solid $gray-400;
+        color: $gray-400;
+    }
+}
+
+@media(min-width: 700px)  {
+    button {
+        width: 15rem;
+    }
+
+    a.btn {
+        width: 15rem;
+    }
+}

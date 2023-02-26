@@ -1,0 +1,18 @@
+section.registerItemList {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1,
+    h3 {
+        margin-top: 4rem;
+    }
+
+    div.error-message{
+        margin-top: 1.5rem;
+    }
+}

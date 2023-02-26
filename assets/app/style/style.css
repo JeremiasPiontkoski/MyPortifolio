@@ -1,3 +1,289 @@
-*{
-    box-sizing: border-box;
+section.registerList {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+section.registerList h1,
+section.registerList h3 {
+  margin-top: 8rem;
+}
+section.registerList div.error-message {
+  margin-top: 3rem;
+}
+
+form.registerList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form.registerList div.container {
+  margin-top: 4rem;
+}
+form.registerList button {
+  margin-top: 3rem;
+}
+
+section.registerItemList {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+section.registerItemList h1,
+section.registerItemList h3 {
+  margin-top: 4rem;
+}
+section.registerItemList div.error-message {
+  margin-top: 1.5rem;
+}
+
+form.registerItemList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form.registerItemList div.container {
+  margin-top: 3rem;
+}
+form.registerItemList button {
+  margin-top: 3rem;
+}
+
+section.updateItemList {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+section.updateItemList h1,
+section.updateItemList h3 {
+  margin-top: 4rem;
+}
+section.updateItemList div.error-message {
+  margin-top: 1.5rem;
+}
+
+form.updateItemList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form.updateItemList div.container {
+  margin-top: 2.5rem;
+}
+form.updateItemList button {
+  margin-top: 2.5rem;
+}
+
+section.updateProfile {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+section.updateProfile h1,
+section.updateProfile h3 {
+  margin-top: 4rem;
+}
+section.updateProfile div.error-message {
+  margin-top: 1.5rem;
+}
+
+form.updateProfile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form.updateProfile div.container {
+  margin-top: 2.5rem;
+}
+form.updateProfile button {
+  margin-top: 2.5rem;
+}
+
+div.container-image {
+  width: 30rem;
+  height: 30rem;
+  margin-top: 4rem;
+}
+div.container-image img {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+}
+
+nav {
+  width: 50vw;
+  height: 6rem;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+nav a,
+nav span {
+  font-size: 3.6rem;
+  font-weight: 800;
+}
+nav a {
+  color: #8d99ae;
+  text-decoration: none;
+}
+nav a span {
+  color: #2b2d42;
+}
+
+div.nav-bottom {
+  width: 50vw;
+  height: 6rem;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.nav-bottom ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15rem;
+}
+div.nav-bottom ul li {
+  list-style: none;
+}
+div.nav-bottom ul li svg path.icon {
+  cursor: pointer;
+  transition: ease 0.5s;
+}
+div.nav-bottom ul li svg path.icon:hover {
+  fill: #edf2f4;
+}
+
+section.itemsList {
+  width: 50vw;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+section.itemsList div.lists {
+  width: 25.5rem;
+  height: 11rem;
+  background-color: #8d99ae;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+section.itemsList div.lists a {
+  text-decoration: none;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #edf2f4;
+  transition: 0.5s ease;
+}
+section.itemsList div.lists a:hover {
+  color: #2b2d42;
+}
+section.itemsList div.lists div {
+  width: 15rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #edf2f4;
+  border-radius: 2rem;
+}
+section.itemsList div.lists div a {
+  font-size: 1.6rem;
+  font-weight: 200;
+  text-decoration: none;
+  color: #2b2d42;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  transition: 0.5s ease;
+}
+
+section.createItemList {
+  width: 50vw;
+  height: 4rem;
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.createItemList a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #8d99ae;
+  text-decoration: none;
+}
+
+section.itemList {
+  width: 25.5rem;
+  height: 14rem;
+  background-color: #8d99ae;
+  border-radius: 2rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+section.itemList a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-decoration: none;
+  color: #edf2f4;
+  font-size: 2.4rem;
+}
+
+/*# sourceMappingURL=style.css.map */

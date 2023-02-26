@@ -1,0 +1,16 @@
+div.error-message {
+    width: 30rem;
+    height: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: map-get($font-sizes , small);
+        font-weight: map-get($font-weights , medium);  
+        color: $red-500;
+
+        text-align: center;
+    }
+}

@@ -1,0 +1,37 @@
+div.nav-bottom {
+    width: 50vw;
+    height: 6rem;
+
+    background-color: transparent;
+
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 15rem;
+
+        li {
+            list-style: none;
+
+            svg {
+                path.icon {
+                    cursor: pointer;
+                    transition: ease .5s;
+                    &:hover {
+                        fill: $gray-100;
+                    }
+                }
+            }
+        }
+    }
+}
